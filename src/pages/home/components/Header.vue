@@ -5,7 +5,7 @@
      </div>
       <div class="header-input">
   <span class="iconfont">&#xe632;</span>
-      输入城市/景点/游玩主题</div>
+      <input type="text" class="input" placeholder="输入城市/景点/游玩主题"></div>
        <div class="header-right">
         城市
         <span class="iconfont arrow-icon">&#xe64a;</span>
@@ -37,7 +37,7 @@ export default {
       flex: 1
       height: .64rem
       line-height: .64rem
-      margin: .12rem
+      margin-top: .12rem
       margin-left: .2rem
       padding-left: .2rem
       background: #fff

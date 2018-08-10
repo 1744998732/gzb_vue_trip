@@ -1,6 +1,6 @@
 <template>
 <div class="wrapper">
-    <swiper :options="swiperOption">
+    <swiper :options="swip">
       <swiper-slide>
         <img class="swiper-img" src="http://img1.qunarzz.com/piao/fusion/1807/22/382624cbe97b0502.jpg_750x200_36a074d6.jpg" />
       </swiper-slide>
@@ -23,7 +23,7 @@ export default {
   name: 'HomeSwiper',
   data () {
     return {
-      swiperOption: {
+      swip: {
         pagination: '.swiper-pagination',
         loop: true
       }
