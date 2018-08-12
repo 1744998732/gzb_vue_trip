@@ -18,7 +18,7 @@ export default {
   .header
     position relative
     overflow: hidden
-    height: .86rem
+    height: .66rem
     line-height: .86rem
     background: $bgColor
     text-align center
@@ -28,6 +28,7 @@ export default {
       position absolute
       width .64rem
       text-align: center
-      font-size: .4rem
+      font-size: .35rem
+      font-weight bold
       color #fff
 </style>
