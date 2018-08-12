@@ -1,4 +1,5 @@
 <template>
+  <div class="search">
   <div class="header-tab">
     <div :class="['item', tab === 1 ? 'active' : '']"
      @click="tab = 1">
@@ -9,6 +10,7 @@
      <router-link to="/city/foreign">境外·港澳台</router-link>
    </div>
   </div>
+</div>
 </template>
 <script>
 export default {
@@ -23,21 +25,25 @@ export default {
 
 <style scoped lang="stylus">
   @import "~styles/varibles.styl"
-  .header-tab
+  .search
+    width 100%
     background-color $bgColor
-    height .80rem
-    line-height .80rem
+  .header-tab
+    margin 0 1rem
+    height .8rem
+    line-height .8rem
     display flex
-    flex-direction row
     justify-content center
     align-items center
     .item
+      width 50%
       color #fff
       border 1px solid #fff
       line-height .4rem
       height .4rem
-      width 36%
+      margin-left value
       text-align center
+      border-radius .02rem
       &.active
         background-color #fff
         color $bgColor
