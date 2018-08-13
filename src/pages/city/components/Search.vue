@@ -1,26 +1,20 @@
 <template>
   <div class="search">
   <div class="header-tab">
-    <div :class="['item', tab === 1 ? 'active' : '']"
-     @click="tab = 1">
-     <router-link to="/city/domestic">境内</router-link>
-   </div>
-    <div :class="['item', tab === 2 ? 'active' : '']"
-     @click="tab = 2">
-     <router-link to="/city/foreign">境外·港澳台</router-link>
-   </div>
+    <router-link to="/city/domestic">
+     境内
+   </router-link>
+   <router-link to="/city/foreign">
+     境外·港澳台
+   </router-link>
   </div>
 </div>
 </template>
 <script>
 export default {
-  name: 'CitySearch',
-  data () {
-    return {
-      tab: 1
-    }
-  }
+  name: 'CitySearch'
 }
+
 </script>
 
 <style scoped lang="stylus">
@@ -35,16 +29,16 @@ export default {
     display flex
     justify-content center
     align-items center
-    .item
+  .header-tab a
+      display block
       width 50%
       color #fff
       border 1px solid #fff
       line-height .4rem
       height .4rem
-      margin-left value
       text-align center
       border-radius .02rem
-      &.active
-        background-color #fff
-        color $bgColor
+    .router-link-active
+      background-color #fff
+      color $bgColor !important
 </style>

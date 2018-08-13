@@ -14,17 +14,16 @@ export default new Router({
       component: Home
     }, {
       path: '/city',
+      redirect: '/city/domestic'
+    }, {
+      path: '/city',
       component: City,
       children: [
         {
           path: 'foreign',
-          name: 'foreign',
           component: Foreign
         }, {
           path: 'domestic',
-          component: Domestic
-        }, {
-          path: '/',
           component: Domestic
         }
       ]

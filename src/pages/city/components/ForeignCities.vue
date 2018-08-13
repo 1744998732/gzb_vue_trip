@@ -3,45 +3,55 @@
     <div class="hotcity">
       <div class="title">热门城市</div>
     <ul class="item-wrapper">
-        <li class="item border-rightbottom">北京</li>
-        <li class="item border-rightbottom">上海</li>
-        <li class="item border-rightbottom">三亚</li>
-        <li class="item border-rightbottom">香港</li>
-        <li class="item border-rightbottom">杭州</li>
-        <li class="item border-rightbottom">广州</li>
+        <li class="item border-rightbottom"
+         v-for="item of hotCities" :key="item.id">{{item.name}}</li>
     </ul>
         </div>
+
     <div class="cityselect">
       <div class="title">字母排序</div>
-    <ul class="item-wrapper">
-        <li class="item">A</li>
-        <li class="item">B</li>
-        <li class="item">C</li>
-        <li class="item">D</li>
-        <li class="item">E</li>
-        <li class="item">F</li>
+    <ul class="item-wrapper" >
+        <li class="item" v-for="(item, key) of cities" :key="key">{{key}}</li>
     </ul>
     </div>
-    <div class="citylist">
-      <div class="title">A</div>
-    <ul class="item-wrapper">
-        <li class="item border-rightbottom">阿里</li>
-        <li class="item border-rightbottom">阿勒泰</li>
-        <li class="item border-rightbottom">阿桂</li>
-        <li class="item border-rightbottom">阿林</li>
-                <li class="item border-rightbottom">阿桂</li>
-        <li class="item border-rightbottom">阿林</li>
-                <li class="item border-rightbottom">阿桂</li>
-        <li class="item border-rightbottom">阿林</li>
 
+    <div class="citylist" v-for="(item, key) of cities" :key="key">
+      <div class="title">{{key}}</div>
+    <ul class="item-wrapper">
+        <li class="item border-rightbottom" v-for="innerItem of item"
+        :key="innerItem.id">{{innerItem.name}}</li>
       </ul>
     </div>
   </div>
 </template>
 
 <script>
+import axios from 'axios'
 export default {
-  name: 'ForeignCities'
+  name: 'ForeignCities',
+  data () {
+    return {
+      hotCities: [],
+      cities: {}
+    }
+  },
+  methods: {
+    getHomeInfo () {
+      axios.get('/api/foreigncity.json')
+        .then(this.getHomeInfoSucc)
+    },
+    getHomeInfoSucc (res) {
+      res = res.data
+      if (res.ret && res.data) {
+        const data = res.data
+        this.hotCities = data.hotCities
+        this.cities = data.cities
+      }
+    }
+  },
+  mounted () {
+    this.getHomeInfo()
+  }
 }
 </script>
 
@@ -77,6 +87,7 @@ export default {
         width calc(100% / 6)
   .citylist
     .item-wrapper
+      justify-content flex-start
       .item
         width 25%
 </style>

@@ -20,6 +20,18 @@ export default {
 }
 </script>
 
-<style>
-
+<style lang="stylus">
+  .header-tab
+    .item
+      width 50%
+      color #fff
+      border 1px solid #fff
+      line-height .4rem
+      height .4rem
+      margin-left value
+      text-align center
+      border-radius .02rem
+      &.active
+        background-color #fff
+        color $bgColor
 </style>

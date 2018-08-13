@@ -5,7 +5,8 @@
      </div>
       <div class="header-input">
   <span class="iconfont">&#xe632;</span>
-      <input type="text" class="input" placeholder="输入城市/景点/游玩主题"></div>
+      输入城市/景点/游玩主题
+    </div>
       <router-link to='/city'>
        <div class="header-right">
         {{this.city}}
@@ -37,7 +38,8 @@ export default {
       float: left
       .back-icon
         text-align: center
-        font-size: .4rem
+        font-size: .35rem
+        font-weight bold
     .header-input
       flex: 1
       height: .6rem
