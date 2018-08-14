@@ -3,19 +3,27 @@
       <div class="title">热门城市</div>
     <ul class="item-wrapper">
         <li class="item border-rightbottom"
-         v-for="item of hotCities" :key="item.id">{{item.name}}</li>
+         v-for="item of hotCities" :key="item.id"
+         @click="handleCityChange(item.name)">
+            {{item.name}}
+        </li>
     </ul>
         </div>
 </template>
 
 <script>
+import {mapMutations} from 'vuex'
 export default {
   name: 'HotCities',
   props: {
     hotCities: Array
   },
   methods: {
-
+    handleCityChange (name) {
+      this.changeCity(name)
+      this.$router.push('/')
+    },
+    ...mapMutations(['changeCity'])
   }
 }
 </script>

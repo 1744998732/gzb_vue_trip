@@ -8,7 +8,7 @@
       <div class="title">{{key}}</div>
     <ul class="item-wrapper">
         <li class="item border-rightbottom" v-for="innerItem of item"
-        :key="innerItem.id">{{innerItem.name}}</li>
+        :key="innerItem.id" @click="handleCityChange(innerItem.name)">{{innerItem.name}}</li>
       </ul>
     </div>
 </div>
@@ -16,11 +16,19 @@
 </template>
 
 <script>
+import {mapMutations} from 'vuex'
 export default {
   name: 'CityList',
   props: {
     cities: Object,
     letter: String
+  },
+  methods: {
+    handleCityChange (name) {
+      this.changeCity(name)
+      this.$router.push('/')
+    },
+    ...mapMutations(['changeCity'])
   },
   watch: {
     letter () {
