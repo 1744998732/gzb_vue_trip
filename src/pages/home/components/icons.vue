@@ -14,6 +14,10 @@ v-for="item of page"
 </swiper-slide>
       <div class="swiper-pagination"  slot="pagination"></div>
 </swiper>
+    <div class="location-wrapper border-top">
+      <div class="location border-right"><span class="iconfont">&#xe610;</span>定位失败</div>
+      <div class="location"><span class="iconfont">&#xe76c;</span>玩水季</div>
+    </div>
 </div>
 </template>
 
@@ -60,13 +64,13 @@ export default {
       float: left
       width: 25%
       height: 0
-      padding-bottom: 25%
+      padding-bottom: 22%
       .icon-img
         position: absolute
         top: 0
         left: 0
         right: 0
-        bottom: .44rem
+        bottom: .28rem
         box-sizing: border-box
         padding: .15rem
         .icon-img-content
@@ -83,4 +87,11 @@ export default {
         text-align: center
         color: $darkTextColor
         ellipsis()
+  .location-wrapper
+    display flex
+    height 1rem
+    line-height 1rem
+    .location
+      text-align center
+      flex 1
 </style>
