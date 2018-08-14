@@ -1,38 +1,31 @@
 <template>
   <div class="list">
-    <div class="hotcity">
-      <div class="title">热门城市</div>
-    <ul class="item-wrapper">
-        <li class="item border-rightbottom"
-         v-for="item of hotCities" :key="item.id">{{item.name}}</li>
-    </ul>
-        </div>
+<hot-city :hotCities="hotCities"></hot-city>
 
-    <div class="cityselect">
-      <div class="title">字母排序</div>
-    <ul class="item-wrapper" >
-        <li class="item" v-for="(item, key) of cities" :key="key">{{key}}</li>
-    </ul>
-    </div>
+<search-city :cities="cities" @change="handleLetterChange"></search-city>
 
-    <div class="citylist" v-for="(item, key) of cities" :key="key">
-      <div class="title">{{key}}</div>
-    <ul class="item-wrapper">
-        <li class="item border-rightbottom" v-for="innerItem of item"
-        :key="innerItem.id">{{innerItem.name}}</li>
-      </ul>
-    </div>
+<city-list :cities="cities"
+           :letter="letter"></city-list>
   </div>
 </template>
 
 <script>
+import SearchCity from './components/SearchCity'
+import HotCity from './components/HotCities'
+import CityList from './components/CityList'
 import axios from 'axios'
 export default {
   name: 'DomesticCities',
+  components: {
+    SearchCity,
+    HotCity,
+    CityList
+  },
   data () {
     return {
       hotCities: [],
-      cities: {}
+      cities: {},
+      letter: ''
     }
   },
   methods: {
@@ -47,6 +40,9 @@ export default {
         this.hotCities = data.hotCities
         this.cities = data.cities
       }
+    },
+    handleLetterChange (letter) {
+      this.letter = letter
     }
   },
   mounted () {
@@ -56,38 +52,5 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
-  @import '~styles/varibles.styl'
-  .border-rightbottom
-    &:before
-      border-color #bbb
-    &:after
-      border-color: #bbb
-  .title
-    line-height .75rem
-    background #eee
-    padding-left .3rem
-    color #212121
-    font-size .2rem
-  .item-wrapper
-    display flex
-    flex-wrap wrap
-    justify-content space-between
-    .item
-      width calc(100% / 3)
-      height 0.9rem
-      line-height 0.9rem
-      text-align center
-  &.cityselect
-    .item-wrapper
-      padding .3rem 0
-      justify-content flex-start
-      background-color #fff
-      .item
-        margin 0
-        width calc(100% / 6)
-  .citylist
-    .item-wrapper
-      justify-content flex-start
-      .item
-        width 25%
+
 </style>
