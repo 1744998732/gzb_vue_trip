@@ -1,6 +1,6 @@
 # vue_trip
 
-> 仿去哪网
+> 仿去哪网移动端
 
 ## Build Setup
 
